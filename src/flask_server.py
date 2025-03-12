@@ -4,10 +4,9 @@ import numpy as np
 
 app = Flask(__name__)
 
+
 # Function to generate synthetic data
 def generate_synthetic_data(num_rows=1000):
-    np.random.seed(42)
-
     synthetic_data = pd.DataFrame({
         "customerID": [f"ID{i}" for i in range(num_rows)],
         "gender": np.random.choice(["Male", "Female"], num_rows),
@@ -31,13 +30,14 @@ def generate_synthetic_data(num_rows=1000):
         "TotalCharges": np.round(np.random.uniform(20.0, 8600.0, num_rows), 2),
         "Churn": np.random.choice(["Yes", "No"], num_rows)
     })
-
     return synthetic_data
+
 
 @app.route('/generate_synthetic_data', methods=['GET'])
 def get_synthetic_data():
     synthetic_data = generate_synthetic_data()
     return jsonify(synthetic_data.to_dict(orient='records'))
+
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=5000)

@@ -1,0 +1,18 @@
+schema: '2.0'
+stages:
+  ingest:
+    cmd: python src/ingest_api.py data/raw/data.csv
+    deps:
+    - path: src/ingest_api.py
+      hash: md5
+      md5: c53ef9c511709faefc0c9a79d5393404
+      size: 1966
+    params:
+      params.yaml:
+        ingest.api_url: http://127.0.0.1:5000/generate_synthetic_data
+    outs:
+    - path: data/raw
+      hash: md5
+      md5: 585633cf965ad40b1df7f97da169dbe7.dir
+      size: 142039
+      nfiles: 1
