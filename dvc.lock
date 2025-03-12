@@ -46,21 +46,23 @@ stages:
     outs:
     - path: data/raw/api
       hash: md5
-      md5: 0733cf01806415ff5d32d38de810e792.dir
-      size: 142353
+      md5: 0cba35f493737f1138935b9652b5f81f.dir
+      size: 143132
       nfiles: 1
   validate:
     cmd: python src/validate.py data/raw/api/api_data.csv data/raw/static/static_data.csv
       data/report/validation_report.json
     deps:
-    - path: data/raw/api/api_data.csv
+    - path: data/raw/api
       hash: md5
-      md5: 6bdf0c6bcc729475c914a587ba548725
-      size: 142353
-    - path: data/raw/static/static_data.csv
+      md5: 0cba35f493737f1138935b9652b5f81f.dir
+      size: 143132
+      nfiles: 1
+    - path: data/raw/static
       hash: md5
-      md5: 0f9de68e012bd3aed5fa7cdc9fc421af
+      md5: d3c0c20c848c3e4291690abe1ab818ee.dir
       size: 977501
+      nfiles: 1
     - path: src/validate.py
       hash: md5
       md5: b9c15d85a5b27a1df79c7b079795744b

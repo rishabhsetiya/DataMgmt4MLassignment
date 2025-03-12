@@ -3,9 +3,12 @@ ingest:
   csv_url: https://raw.githubusercontent.com/dsrscientist/DSData/master/Telecom_customer_churn.csv
 validate:
 prepare:
-
+  data_path: data/processed
 store:
-
+  server: DESKTOP-1JVEQTF
+  username: sa
+  password: sa123
+  driver: {ODBC Driver 17 for SQL Server}
 feature_store:
 
 train:
