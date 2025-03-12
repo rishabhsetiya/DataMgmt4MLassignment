@@ -15,3 +15,11 @@ stages:
     - ingest.api_url
     outs:
     - data/raw/api
+  validate:
+    cmd: python src/validate.py data/raw/api/api_data.csv data/raw/static/static_data.csv data/report/validation_report.json
+    deps:
+      - src/validate.py
+      - data/raw/api/api_data.csv
+      - data/raw/static/static_data.csv
+    outs:
+      - data/report
