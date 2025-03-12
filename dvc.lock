@@ -16,3 +16,36 @@ stages:
       md5: 585633cf965ad40b1df7f97da169dbe7.dir
       size: 142039
       nfiles: 1
+  ingest_static:
+    cmd: python src/ingest_static.py data/raw/static/static_data.csv
+    deps:
+    - path: src/ingest_static.py
+      hash: md5
+      md5: b838eaaad915a0c8b59b2fd45421feaa
+      size: 1246
+    params:
+      params.yaml:
+        ingest.csv_url: 
+          https://raw.githubusercontent.com/dsrscientist/DSData/master/Telecom_customer_churn.csv
+    outs:
+    - path: data/raw/static
+      hash: md5
+      md5: d3c0c20c848c3e4291690abe1ab818ee.dir
+      size: 977501
+      nfiles: 1
+  ingest_api:
+    cmd: python src/ingest_api.py data/raw/api/api_data.csv
+    deps:
+    - path: src/ingest_api.py
+      hash: md5
+      md5: f06ff221e6eef0ab628be5cd2ac04bcc
+      size: 1931
+    params:
+      params.yaml:
+        ingest.api_url: http://127.0.0.1:5000/generate_synthetic_data
+    outs:
+    - path: data/raw/api
+      hash: md5
+      md5: cf5132d0cf4024ee4a1b95126582ecd4.dir
+      size: 142374
+      nfiles: 1

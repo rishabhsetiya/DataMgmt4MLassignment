@@ -46,7 +46,7 @@ def json_to_csv(json_data, csv_file_path):
 
 def main():
     params = yaml.safe_load(open("params.yaml"))["ingest"]
-    api_url = params['api_url']  # Replace with the actual API URL
+    api_url = params['api_url']
     csv_file_path = sys.argv[1]
 
     try:

@@ -1,9 +1,17 @@
 stages:
-  ingest:
-    cmd: python src/ingest_api.py data/raw/data.csv
+  ingest_static:
+    cmd: python src/ingest_static.py data/raw/static/static_data.csv
+    deps:
+    - src/ingest_static.py
+    params:
+    - ingest.csv_url
+    outs:
+    - data/raw/static
+  ingest_api:
+    cmd: python src/ingest_api.py data/raw/api/api_data.csv
     deps:
     - src/ingest_api.py
     params:
     - ingest.api_url
     outs:
-    - data/raw
+    - data/raw/api
