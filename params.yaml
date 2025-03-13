@@ -14,6 +14,8 @@ feature_store:
   username: sa
   password: sa123
   driver: ODBC Driver 17 for SQL Server
+  db_name: TELCO_CHURN_DB
   api_key: CgYupUsvdGRc0duC.gyJlzE0UpNoXC8wPLZq0Se7ojMCS65TfLY3CrTOFEha6Pl2NItNFN5rgwFT4fi5v
-
 train:
+  api_key: CgYupUsvdGRc0duC.gyJlzE0UpNoXC8wPLZq0Se7ojMCS65TfLY3CrTOFEha6Pl2NItNFN5rgwFT4fi5v
+  model_path: model

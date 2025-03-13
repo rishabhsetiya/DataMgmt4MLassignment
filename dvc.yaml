@@ -44,3 +44,10 @@ stages:
       - logs/store_sql.log
     outs:
       - logs/feature_store.log
+  train:
+    cmd: python src/train.py
+    deps:
+      - src/train.py
+      - logs/feature_store.log
+    outs:
+      - model/model.pkl

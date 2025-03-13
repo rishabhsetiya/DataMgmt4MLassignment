@@ -4,7 +4,6 @@ import numpy as np
 
 app = Flask(__name__)
 
-
 # Function to generate synthetic data
 def generate_synthetic_data(num_rows=1000):
     synthetic_data = pd.DataFrame({

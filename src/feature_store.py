@@ -18,7 +18,7 @@ def main():
     username = params["username"]
     password = params["password"]
     driver = params["driver"]
-    db_name = 'TELCO_CHURN_DB';
+    db_name = params["db_name"];
     #connect to MS SQL Server and get data into dataframe
     conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{db_name}?driver={driver}"
     engine = create_engine(conn_str)
