@@ -10,6 +10,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
+# Configure logging
+logging.basicConfig(filename='../prepare_file.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 def impute_missing_values(df):
     """
     Imputes missing values in a DataFrame:
@@ -26,13 +30,13 @@ def impute_missing_values(df):
 
 # Function for processing
 def data_processing(source, destination):
-    print ("PROCESSING THE FILE ", source)
+    logging.info ("PROCESSING THE FILE ", source)
     df = pd.read_csv(source)
 
-    print(df.head(2))
-    print("Shape of the dataset ", df.shape)
-    print("Data types of the columns ", df.dtypes)
-    print("Information of the dataset ", df.info())
+    logging.info (df.head(2))
+    logging.info ("Shape of the dataset ", df.shape)
+    logging.info ("Data types of the columns ", df.dtypes)
+    ("Information of the dataset ", df.info())
 
     # Convert 'TotalCharges' to numeric (errors='coerce' converts non-numeric to NaN)
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
