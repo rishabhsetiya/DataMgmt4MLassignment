@@ -8,6 +8,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 import seaborn as sns
 import matplotlib.pyplot as plt
+import logging
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 # Configure logging
@@ -40,7 +41,7 @@ def data_processing(source, destination, c):
 
     # Convert 'TotalCharges' to numeric (errors='coerce' converts non-numeric to NaN)
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
-    logging.ingo (f"Datatype of Total Charges :{df['TotalCharges'].dtype}")
+    logging.info (f"Datatype of Total Charges :{df['TotalCharges'].dtype}")
 
     df = impute_missing_values(df)
     df = df.drop_duplicates()
@@ -135,9 +136,9 @@ def main():
     KAGGLE_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "static/static_data.csv")
     SYNTHETIC_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "api/api_data.csv")
     c = "kaggle"
-    data_processing(KAGGLE_CSV_PATH, KAGGLE_CSV_PATH_PROCESSED)
+    data_processing(KAGGLE_CSV_PATH, KAGGLE_CSV_PATH_PROCESSED, c)
     c = "synthetic"
-    data_processing(SYNTHETIC_CSV_PATH, SYNTHETIC_CSV_PATH_PROCESSED)
+    data_processing(SYNTHETIC_CSV_PATH, SYNTHETIC_CSV_PATH_PROCESSED, c)
 
 if __name__ == "__main__":
     main()

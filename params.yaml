@@ -10,5 +10,10 @@ store:
   password: sa123
   driver: ODBC Driver 17 for SQL Server
 feature_store:
+  server: LAPTOP-4IUEL4B8
+  username: sa
+  password: sa123
+  driver: ODBC Driver 17 for SQL Server
+  api_key: CgYupUsvdGRc0duC.gyJlzE0UpNoXC8wPLZq0Se7ojMCS65TfLY3CrTOFEha6Pl2NItNFN5rgwFT4fi5v
 
 train:

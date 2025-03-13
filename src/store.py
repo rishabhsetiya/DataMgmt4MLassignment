@@ -1,5 +1,6 @@
 import pyodbc
 import os
+import logging
 import requests
 import numpy as np
 import pandas as pd
@@ -11,7 +12,7 @@ import yaml
 import sys
 
 # Configure logging
-logging.basicConfig(filename='../prepare_file.log', level=logging.INFO,
+logging.basicConfig(filename='../store_sql.log', level=logging.INFO,
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 def saving_to_sql (source_file):
@@ -59,11 +60,11 @@ def saving_to_sql (source_file):
     row = cursor.fetchone()
 
     if row:
-        logging.info(f"Table '{table_name}' exists. Appending the data", source_file)
+        logging.info(f"Table {source_file} exists. Appending the data")
         df.to_sql(table_name, con=engine, if_exists="append", index=False)
         logging.info("Data written to sql server successfully")
     else:
-        print(f"Table '{table_name}' does not exist. Creating Table")
+        print(f"Table {table_name} does not exist. Creating Table")
         create_table_query = """
             CREATE TABLE telco_churn_table (
             gender int, SeniorCitizen int, Partner int, Dependents int, tenure float, PhoneService int, MultipleLines int, InternetService int,
