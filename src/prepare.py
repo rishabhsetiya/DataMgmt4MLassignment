@@ -8,6 +8,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
+# Configure logging
+logging.basicConfig(filename='../prepare_file.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
+
 def impute_missing_values(df):
     """
     Imputes missing values in a DataFrame:
