@@ -45,8 +45,19 @@ def main():
         column="gender", value_set=['Male', 'Female'],
     )
 
+    # TotalCharges should be non-negative
+    expectation1 = gx.expectations.ExpectColumnValuesToBeBetween(
+    column="TotalCharges", min_value=0
+    )
+
+    expectation2 = gx.expectations.ExpectColumnValuesToBeOfType(
+    column="MonthlyCharges", 
+    type_list=["int", "float", "double", "decimal"]  # Allow only numeric types
+)
     #Run and get the results!
     validation_result = batch.validate(expectation)
+    validation_result1 = batch.validate(expectation1)
+    validation_result2 = batch.validate(expectation2)
 
     file_path = sys.argv[3]
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
