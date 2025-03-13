@@ -33,7 +33,6 @@ def data_processing(source, destination, c):
     logging.info ("PROCESSING THE FILE ", source)
     df = pd.read_csv(source)
 
-    logging.info (df.head(2))
     logging.info (f"Shape of the dataset {df.shape}")
     logging.info (f"Data types of the columns {df.dtypes}")
     logging.info (f"Information of the dataset {df.info()}")
@@ -89,8 +88,6 @@ def data_processing(source, destination, c):
         le = LabelEncoder()
         df[col] = le.fit_transform(df[col])
         label_encoders[col] = le
-
-    logging.info(df.head(2))
 
     #Perform EDA
     # Plot Churn distribution

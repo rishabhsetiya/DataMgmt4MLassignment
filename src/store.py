@@ -63,7 +63,7 @@ def saving_to_sql (source_file):
         df.to_sql(table_name, con=engine, if_exists="append", index=False)
         logging.info("Data written to sql server successfully")
     else:
-        print(f"Table {table_name} does not exist. Creating Table")
+        logging.info(f"Table {table_name} does not exist. Creating Table")
         create_table_query = """
             CREATE TABLE telco_churn_table (
             gender int, SeniorCitizen int, Partner int, Dependents int, tenure float, PhoneService int, MultipleLines int, InternetService int,
