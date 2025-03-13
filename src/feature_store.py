@@ -3,6 +3,7 @@ import yaml
 import hopsworks
 import os
 import pyodbc
+from sqlalchemy import create_engine
 
 if __name__ == "__main__":
     params = yaml.safe_load(open("params.yaml"))["feature_store"]
@@ -12,12 +13,14 @@ if __name__ == "__main__":
     username = params["username"]
     password = params["password"]
     driver = params["driver"]
-
-    # Create connection string
-    conn = pyodbc.connect(f'DRIVER={driver};SERVER={server};DATABASE=master;UID={username};PWD={password}', autocommit = True)
-
+    db_name = 'TELCO_CHURN_DB';
+    #connect to MS SQL Server and get data into dataframe
+    conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{db_name}?driver={driver}"
+    engine = create_engine(conn_str)
+    conn = engine.connect()
+    print("Connected successfully!")
     df = pd.read_sql("SELECT * FROM telco_churn_table", conn)
-
+    df['sno'] = range(len(df))
     os.environ['HOPSWORKS_API_KEY'] = params["api_key"]
 
     project = hopsworks.login()
@@ -31,8 +34,9 @@ if __name__ == "__main__":
         name=feature_group_name,
         version=1,
         description="Customer churn features from SQL database",
-        primary_key=["customerID"],  # Assuming 'id' is your primary key
+        primary_key=["sno"]
     )
 
+    print(df.head())
     # Insert the data into the feature group
     feature_group.insert(df)

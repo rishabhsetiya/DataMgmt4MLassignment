@@ -43,7 +43,7 @@ def saving_to_sql (source_file):
         conn.commit()
         logging.info(f"Database '{db_name}' created successfully.")
 
-    conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{db_name}?driver=ODBC+Driver+17+for+SQL+Server"
+    conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{db_name}?driver={driver}"
     engine = create_engine(conn_str)
     conn = engine.connect()
     logging.info("Connected successfully!")

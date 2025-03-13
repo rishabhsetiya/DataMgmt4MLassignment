@@ -35,3 +35,10 @@ stages:
     deps:
       - src/store.py
       - data/processed
+  feature_store:
+    cmd: python src/feature_store.py
+    deps:
+      - src/feature_store.py
+      - data/processed
+    outs:
+      - data/feature_store

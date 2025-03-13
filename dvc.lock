@@ -101,5 +101,5 @@ stages:
       nfiles: 2
     - path: src/store.py
       hash: md5
-      md5: 576d7c6e3fe9230e0b2b53d6a11964eb
-      size: 3399
+      md5: e740a5afc9f60fdfa16f554edff86f00
+      size: 3378
