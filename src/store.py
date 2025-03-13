@@ -10,6 +10,9 @@ from sklearn.preprocessing import StandardScaler, LabelEncoder
 import yaml
 import sys
 
+# Configure logging
+logging.basicConfig(filename='../prepare_file.log', level=logging.INFO,
+                    format='%(asctime)s - %(levelname)s - %(message)s')
 
 def saving_to_sql (source_file):
     params = yaml.safe_load(open("params.yaml"))["store"]
@@ -30,19 +33,19 @@ def saving_to_sql (source_file):
     cursor.execute(query)
     row = cursor.fetchone()
     if row:
-        print(f"Database '{db_name}' already exists.")
+        logging.info(f"Database '{db_name}' already exists.")
     else:
-        print(f"Database '{db_name}' does not exist. Creating now...")
+        logging.info(f"Database '{db_name}' does not exist. Creating now...")
 
         # Create the database
         cursor.execute(f"CREATE DATABASE {db_name}")
         conn.commit()
-        print(f"Database '{db_name}' created successfully.")
+        logging.info(f"Database '{db_name}' created successfully.")
 
     conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{db_name}?driver=ODBC+Driver+17+for+SQL+Server"
     engine = create_engine(conn_str)
     conn = engine.connect()
-    print("Connected successfully!")
+    logging.info("Connected successfully!")
 
     df = pd.read_csv(source_file)
     df["tenure"] = df["tenure"].apply(lambda x: round(x, 5))
@@ -56,9 +59,9 @@ def saving_to_sql (source_file):
     row = cursor.fetchone()
 
     if row:
-        print(f"Table '{table_name}' exists. Appending the data", source_file)
+        logging.info(f"Table '{table_name}' exists. Appending the data", source_file)
         df.to_sql(table_name, con=engine, if_exists="append", index=False)
-        print("Data written to sql server successfully")
+        logging.info("Data written to sql server successfully")
     else:
         print(f"Table '{table_name}' does not exist. Creating Table")
         create_table_query = """
@@ -71,7 +74,7 @@ def saving_to_sql (source_file):
            """
         cursor.execute(create_table_query)
         #conn.commit()
-        print ("Table Created successfully")
+        logging.info ("Table Created successfully")
         df.to_sql(table_name, con=engine, if_exists="append", index=False)
 
     cursor.close()
