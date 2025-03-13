@@ -4,6 +4,7 @@ ingest:
 validate:
 prepare:
   data_path: data/processed
+  visualizations_path: data/visualizations
 store:
   server: LAPTOP-4IUEL4B8
   username: sa
