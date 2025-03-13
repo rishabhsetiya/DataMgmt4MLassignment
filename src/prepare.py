@@ -29,7 +29,7 @@ def impute_missing_values(df):
 
 
 # Function for processing
-def data_processing(source, destination, c):
+def data_processing(source, destination, c, VISUALIZATIONS_PATH):
     logging.info ("PROCESSING THE FILE ", source)
     df = pd.read_csv(source)
 
@@ -96,14 +96,14 @@ def data_processing(source, destination, c):
     plt.title("Churn Distribution")
     plt.xlabel("Churn (0 = No, 1 = Yes)")
     plt.ylabel("Count")
-    name="churn_distribution_"+c+".jpg"
+    name=VISUALIZATIONS_PATH+"churn_distribution_"+c+".jpg"
     plt.savefig(name, format="jpg", dpi=300) 
     plt.close()
 
     # Plot numerical feature distributions
     df[num_cols].hist(figsize=(12, 5), bins=30, layout=(1, 4), color='purple', edgecolor='black')
     plt.suptitle("Distribution of Standardized Numerical Features")
-    name="distribution_num_features_"+c+".jpg"
+    name=VISUALIZATIONS_PATH+"distribution_num_features_"+c+".jpg"
     plt.savefig(name, format="jpg", dpi=300)
     plt.close()
 
@@ -112,7 +112,7 @@ def data_processing(source, destination, c):
     sns.boxplot(data=df[num_cols], palette="coolwarm")
     plt.title("Boxplot of Standardized Numerical Features (Outliers Detection)")
     plt.xticks(rotation=45)
-    name="boxplot_"+c+".jpg"
+    name=VISUALIZATIONS_PATH+"boxplot_"+c+".jpg"
     plt.savefig(name, format="jpg", dpi=300)
     plt.close()
 
@@ -129,12 +129,13 @@ def main():
     KAGGLE_CSV_PATH = sys.argv[2]
     params = yaml.safe_load(open("params.yaml"))["prepare"]
     DATA_PATH = params["data_path"]
+    VISUALIZATIONS_PATH = params["visualizations_path"]
     KAGGLE_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "static/static_data.csv")
     SYNTHETIC_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "api/api_data.csv")
     c = "kaggle"
-    data_processing(KAGGLE_CSV_PATH, KAGGLE_CSV_PATH_PROCESSED, c)
+    data_processing(KAGGLE_CSV_PATH, KAGGLE_CSV_PATH_PROCESSED, c, VISUALIZATIONS_PATH )
     c = "synthetic"
-    data_processing(SYNTHETIC_CSV_PATH, SYNTHETIC_CSV_PATH_PROCESSED, c)
+    data_processing(SYNTHETIC_CSV_PATH, SYNTHETIC_CSV_PATH_PROCESSED, c, VISUALIZATIONS_PATH)
 
 if __name__ == "__main__":
     main()
