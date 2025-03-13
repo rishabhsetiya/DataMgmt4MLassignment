@@ -59,12 +59,20 @@ def main():
     validation_result1 = batch.validate(expectation1)
     validation_result2 = batch.validate(expectation2)
 
+    results = {
+        "validation_result": validation_result.to_json_dict(),
+        "validation_result1": validation_result1.to_json_dict(),
+        "validation_result2": validation_result2.to_json_dict(),
+    }
+    
     file_path = sys.argv[3]
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
 
-    with open(file_path, 'w') as file:
-        file.write(str(validation_result))
+    #with open(file_path, 'w') as file:
+    #    file.write(str(validation_result))
 
+    with open(file_path, 'w') as file:
+        json.dump(results, file, indent=4)
 
 if __name__ == "__main__":
     main()
