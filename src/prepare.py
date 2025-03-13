@@ -12,8 +12,7 @@ import logging
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 
 # Configure logging
-logging.basicConfig(filename='../prepare_file.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='./logs/prepare_file.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def impute_missing_values(df):
     """

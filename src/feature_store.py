@@ -1,13 +1,18 @@
+import logging
+# Configure logging
+logging.basicConfig(filename='./logs/feature_store.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 import pandas as pd
 import yaml
 import hopsworks
 import os
 import pyodbc
+
 from sqlalchemy import create_engine
 
-if __name__ == "__main__":
+def main():
     params = yaml.safe_load(open("params.yaml"))["feature_store"]
-
+    logging.info("Storing data into feature store...")
     # connect to MS SQL Server and get data
     server = params["server"]
     username = params["username"]
@@ -18,7 +23,7 @@ if __name__ == "__main__":
     conn_str = f"mssql+pyodbc://{username}:{password}@{server}/{db_name}?driver={driver}"
     engine = create_engine(conn_str)
     conn = engine.connect()
-    print("Connected successfully!")
+    logging.info("Connected successfully!")
     df = pd.read_sql("SELECT * FROM telco_churn_table", conn)
     df['sno'] = range(len(df))
     os.environ['HOPSWORKS_API_KEY'] = params["api_key"]
@@ -37,6 +42,9 @@ if __name__ == "__main__":
         primary_key=["sno"]
     )
 
-    print(df.head())
     # Insert the data into the feature group
     feature_group.insert(df)
+    logging.info("Data inserted successfully!")
+
+if __name__ == "__main__":
+    main()

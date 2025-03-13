@@ -29,16 +29,18 @@ stages:
       - src/prepare.py
       - data/report
     outs:
-      - data/processed
+      - logs/prepare_file.log
   store:
     cmd: python src/store.py data/processed/api/api_data.csv data/processed/static/static_data.csv
     deps:
       - src/store.py
-      - data/processed
+      - logs/prepare_file.log
+    outs:
+      - logs/store_sql.log
   feature_store:
     cmd: python src/feature_store.py
     deps:
       - src/feature_store.py
-      - data/processed
+      - logs/store_sql.log
     outs:
-      - data/feature_store
+      - logs/feature_store.log

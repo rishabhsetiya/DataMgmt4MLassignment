@@ -1,13 +1,11 @@
 import requests
-import logging
 import os
 import yaml
 import sys
+import logging
 
 # Configure logging
-logging.basicConfig(filename='download_csv.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
-
+logging.basicConfig(filename='./logs/download_csv.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def download_csv(url, local_file_path):
     try:

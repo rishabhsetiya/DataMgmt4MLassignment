@@ -6,8 +6,7 @@ import sys
 import os
 
 # Configure logging
-logging.basicConfig(filename='../api_to_csv.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='./logs/api_to_csv.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
 def get_api_data(url):

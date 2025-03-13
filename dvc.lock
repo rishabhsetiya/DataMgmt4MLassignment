@@ -21,8 +21,8 @@ stages:
     deps:
     - path: src/ingest_static.py
       hash: md5
-      md5: b838eaaad915a0c8b59b2fd45421feaa
-      size: 1246
+      md5: 6f429925b269a614be2e42411b9455c2
+      size: 1230
     params:
       params.yaml:
         ingest.csv_url: 
@@ -38,16 +38,16 @@ stages:
     deps:
     - path: src/ingest_api.py
       hash: md5
-      md5: f06ff221e6eef0ab628be5cd2ac04bcc
-      size: 1931
+      md5: 9c02b12a1a5cca45b67aa39543b20c1a
+      size: 1914
     params:
       params.yaml:
         ingest.api_url: http://127.0.0.1:5000/generate_synthetic_data
     outs:
     - path: data/raw/api
       hash: md5
-      md5: 0cba35f493737f1138935b9652b5f81f.dir
-      size: 143132
+      md5: 5b51ad34d7ee02d3055c3531bd4d012f.dir
+      size: 143621
       nfiles: 1
   validate:
     cmd: python src/validate.py data/raw/api/api_data.csv data/raw/static/static_data.csv
@@ -55,8 +55,8 @@ stages:
     deps:
     - path: data/raw/api
       hash: md5
-      md5: 0cba35f493737f1138935b9652b5f81f.dir
-      size: 143132
+      md5: 5b51ad34d7ee02d3055c3531bd4d012f.dir
+      size: 143621
       nfiles: 1
     - path: data/raw/static
       hash: md5
@@ -65,8 +65,8 @@ stages:
       nfiles: 1
     - path: src/validate.py
       hash: md5
-      md5: b9c15d85a5b27a1df79c7b079795744b
-      size: 1906
+      md5: 17fd2a39715eec679e0bc030fb6aa9f6
+      size: 1902
     outs:
     - path: data/report
       hash: md5
@@ -83,23 +83,42 @@ stages:
       nfiles: 1
     - path: src/prepare.py
       hash: md5
-      md5: 9da402e3c6a3d58776999618065e2d33
-      size: 5223
+      md5: f51265cd9558f696dc4b77ac853493e7
+      size: 5206
     outs:
-    - path: data/processed
+    - path: logs/prepare_file.log
       hash: md5
-      md5: 178241991ff85050ab3f13972fc91e70.dir
-      size: 960925
-      nfiles: 2
+      md5: 49c62fe38137b7192fc0c123fa83753f
+      size: 5238
   store:
     cmd: python src/store.py data/processed/api/api_data.csv data/processed/static/static_data.csv
     deps:
-    - path: data/processed
+    - path: logs/prepare_file.log
       hash: md5
-      md5: 178241991ff85050ab3f13972fc91e70.dir
-      size: 960925
-      nfiles: 2
+      md5: 49c62fe38137b7192fc0c123fa83753f
+      size: 5238
     - path: src/store.py
       hash: md5
-      md5: e740a5afc9f60fdfa16f554edff86f00
-      size: 3378
+      md5: 3108d6f32394d20b5ae59a25b257094c
+      size: 3361
+    outs:
+    - path: logs/store_sql.log
+      hash: md5
+      md5: c17c8b4b665a7befebd39c423c1e540b
+      size: 620
+  feature_store:
+    cmd: python src/feature_store.py
+    deps:
+    - path: logs/store_sql.log
+      hash: md5
+      md5: c17c8b4b665a7befebd39c423c1e540b
+      size: 620
+    - path: src/feature_store.py
+      hash: md5
+      md5: a52c072d9d3c9d19546ec443407a597f
+      size: 1650
+    outs:
+    - path: logs/feature_store.log
+      hash: md5
+      md5: 81e9cdaf512af3aeb2c26e6f4d8a2b0b
+      size: 30548

@@ -12,8 +12,7 @@ import yaml
 import sys
 
 # Configure logging
-logging.basicConfig(filename='../store_sql.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='./logs/store_sql.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def saving_to_sql (source_file):
     params = yaml.safe_load(open("params.yaml"))["store"]

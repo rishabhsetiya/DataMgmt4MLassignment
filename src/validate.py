@@ -7,16 +7,15 @@ import sys
 import yaml
 
 # Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+logging.basicConfig(filename='./logs/validate.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def load_csv(file_path):
     try:
         df = pd.read_csv(file_path)
-        logger.info(f"Loaded CSV file: {file_path}")
+        logging.info(f"Loaded CSV file: {file_path}")
         return df
     except Exception as e:
-        logger.error(f"Error loading CSV file {file_path}: {e}")
+        logging.error(f"Error loading CSV file {file_path}: {e}")
         raise
 
 def main():
