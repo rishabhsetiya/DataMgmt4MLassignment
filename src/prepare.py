@@ -130,6 +130,8 @@ def main():
     params = yaml.safe_load(open("params.yaml"))["prepare"]
     DATA_PATH = params["data_path"]
     VISUALIZATIONS_PATH = params["visualizations_path"]
+    os.makedirs(os.path.dirname(VISUALIZATIONS_PATH), exist_ok=True)
+
     KAGGLE_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "static/static_data.csv")
     SYNTHETIC_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "api/api_data.csv")
     c = "kaggle"

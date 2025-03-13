@@ -46,8 +46,8 @@ stages:
     outs:
     - path: data/raw/api
       hash: md5
-      md5: d955140566b32dd1118e94673e0e20fb.dir
-      size: 143880
+      md5: 846d07c0d70cae428ab70536701b9bf0.dir
+      size: 142486
       nfiles: 1
   validate:
     cmd: python src/validate.py data/raw/api/api_data.csv data/raw/static/static_data.csv
@@ -55,8 +55,8 @@ stages:
     deps:
     - path: data/raw/api
       hash: md5
-      md5: d955140566b32dd1118e94673e0e20fb.dir
-      size: 143880
+      md5: 846d07c0d70cae428ab70536701b9bf0.dir
+      size: 142486
       nfiles: 1
     - path: data/raw/static
       hash: md5
@@ -83,19 +83,19 @@ stages:
       nfiles: 1
     - path: src/prepare.py
       hash: md5
-      md5: 5c2da82989a602b3d9429bf7ac838626
-      size: 5143
+      md5: 64dfd2bb461406f8393a809dd9d6ffbe
+      size: 5396
     outs:
     - path: logs/prepare_file.log
       hash: md5
-      md5: 456200a0903169f1859f27df1996d055
+      md5: 7924ab7daeb34d4914f684836c4cf7d2
       size: 2870
   store:
     cmd: python src/store.py data/processed/api/api_data.csv data/processed/static/static_data.csv
     deps:
     - path: logs/prepare_file.log
       hash: md5
-      md5: 456200a0903169f1859f27df1996d055
+      md5: 7924ab7daeb34d4914f684836c4cf7d2
       size: 2870
     - path: src/store.py
       hash: md5
@@ -104,14 +104,14 @@ stages:
     outs:
     - path: logs/store_sql.log
       hash: md5
-      md5: 83ea2e755a69f5ba91155e1f7dbe04a2
+      md5: 91bc9b8fed16712c0d494f1ad5866eb6
       size: 620
   feature_store:
     cmd: python src/feature_store.py
     deps:
     - path: logs/store_sql.log
       hash: md5
-      md5: 83ea2e755a69f5ba91155e1f7dbe04a2
+      md5: 91bc9b8fed16712c0d494f1ad5866eb6
       size: 620
     - path: src/feature_store.py
       hash: md5
@@ -120,14 +120,14 @@ stages:
     outs:
     - path: logs/feature_store.log
       hash: md5
-      md5: 9ca59fa0f0dfe362bd670f3697c23eea
+      md5: b785ddee059fb6a833a62e8e72a8bd4b
       size: 30548
   train:
     cmd: python src/train.py
     deps:
     - path: logs/feature_store.log
       hash: md5
-      md5: 9ca59fa0f0dfe362bd670f3697c23eea
+      md5: b785ddee059fb6a833a62e8e72a8bd4b
       size: 30548
     - path: src/train.py
       hash: md5
@@ -136,5 +136,5 @@ stages:
     outs:
     - path: model/model.pkl
       hash: md5
-      md5: c774512bbf62b594706f45ce64fbc36c
-      size: 20917974
+      md5: f0b00c825e2d2436c312288a292dd5c2
+      size: 41407994
