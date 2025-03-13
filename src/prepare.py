@@ -1,5 +1,7 @@
 import pyodbc
 import os
+import sys
+import yaml
 import requests
 import numpy as np
 import pandas as pd
@@ -107,6 +109,8 @@ def data_processing(source, destination):
     plt.xticks(rotation=45)
     plt.show()
 
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
+
     # Save cleaned data
     df.to_csv(destination, index=False)
 
@@ -119,8 +123,8 @@ def main():
     KAGGLE_CSV_PATH = sys.argv[2]
     params = yaml.safe_load(open("params.yaml"))["prepare"]
     DATA_PATH = params["data_path"]
-    KAGGLE_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "static_data.csv")
-    SYNTHETIC_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "api_data.csv")
+    KAGGLE_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "static/static_data.csv")
+    SYNTHETIC_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "api/api_data.csv")
     data_processing(KAGGLE_CSV_PATH, KAGGLE_CSV_PATH_PROCESSED)
     data_processing(SYNTHETIC_CSV_PATH, SYNTHETIC_CSV_PATH_PROCESSED)
 

@@ -24,7 +24,7 @@ stages:
     outs:
       - data/report
   prepare:
-    cmd: python src/prepare.py data/raw/api/api_data.csv data/raw/static/static_data.csv data/processed/processed_data.csv
+    cmd: python src/prepare.py data/raw/api/api_data.csv data/raw/static/static_data.csv
     deps:
       - src/prepare.py
       - data/report

@@ -73,3 +73,33 @@ stages:
       md5: e1ebed7f2575a347368852e19a2034a6.dir
       size: 788
       nfiles: 1
+  prepare:
+    cmd: python src/prepare.py data/raw/api/api_data.csv data/raw/static/static_data.csv
+    deps:
+    - path: data/report
+      hash: md5
+      md5: e1ebed7f2575a347368852e19a2034a6.dir
+      size: 788
+      nfiles: 1
+    - path: src/prepare.py
+      hash: md5
+      md5: 49014808c840ac359e73a213fdd148ba
+      size: 4680
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 178241991ff85050ab3f13972fc91e70.dir
+      size: 960925
+      nfiles: 2
+  store:
+    cmd: python src/store.py data/processed/api/api_data.csv data/processed/static/static_data.csv
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 178241991ff85050ab3f13972fc91e70.dir
+      size: 960925
+      nfiles: 2
+    - path: src/store.py
+      hash: md5
+      md5: 27460a102f0d207b16de1a488141e394
+      size: 3184

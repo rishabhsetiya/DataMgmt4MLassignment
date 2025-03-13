@@ -5,10 +5,10 @@ validate:
 prepare:
   data_path: data/processed
 store:
-  server: DESKTOP-1JVEQTF
+  server: LAPTOP-4IUEL4B8
   username: sa
   password: sa123
-  driver: {ODBC Driver 17 for SQL Server}
+  driver: ODBC Driver 17 for SQL Server
 feature_store:
 
 train:
