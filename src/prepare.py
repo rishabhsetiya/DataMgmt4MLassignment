@@ -29,18 +29,18 @@ def impute_missing_values(df):
 
 
 # Function for processing
-def data_processing(source, destination):
+def data_processing(source, destination, c):
     logging.info ("PROCESSING THE FILE ", source)
     df = pd.read_csv(source)
 
     logging.info (df.head(2))
-    logging.info ("Shape of the dataset ", df.shape)
-    logging.info ("Data types of the columns ", df.dtypes)
-    ("Information of the dataset ", df.info())
+    logging.info (f"Shape of the dataset {df.shape}")
+    logging.info (f"Data types of the columns {df.dtypes}")
+    logging.info (f"Information of the dataset {df.info()}")
 
     # Convert 'TotalCharges' to numeric (errors='coerce' converts non-numeric to NaN)
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
-    print ("Datatype of Total Charges :", df['TotalCharges'].dtype)
+    logging.ingo (f"Datatype of Total Charges :{df['TotalCharges'].dtype}")
 
     df = impute_missing_values(df)
     df = df.drop_duplicates()
@@ -90,7 +90,7 @@ def data_processing(source, destination):
         df[col] = le.fit_transform(df[col])
         label_encoders[col] = le
 
-    print(df.head(2))
+    logging.info(df.head(2))
 
     #Perform EDA
     # Plot Churn distribution
@@ -99,27 +99,32 @@ def data_processing(source, destination):
     plt.title("Churn Distribution")
     plt.xlabel("Churn (0 = No, 1 = Yes)")
     plt.ylabel("Count")
-    plt.show()
+    name="churn_distribution_"+c+".jpg"
+    plt.savefig(name, format="jpg", dpi=300) 
+    plt.close()
 
     # Plot numerical feature distributions
     df[num_cols].hist(figsize=(12, 5), bins=30, layout=(1, 4), color='purple', edgecolor='black')
     plt.suptitle("Distribution of Standardized Numerical Features")
-    plt.show()
+    name="distribution_num_features_"+c+".jpg"
+    plt.savefig(name, format="jpg", dpi=300)
+    plt.close()
 
     # Boxplot to detect outliers
     plt.figure(figsize=(12, 5))
     sns.boxplot(data=df[num_cols], palette="coolwarm")
     plt.title("Boxplot of Standardized Numerical Features (Outliers Detection)")
     plt.xticks(rotation=45)
-    plt.show()
+    name="boxplot_"+c+".jpg"
+    plt.savefig(name, format="jpg", dpi=300)
+    plt.close()
 
     os.makedirs(os.path.dirname(destination), exist_ok=True)
 
     # Save cleaned data
     df.to_csv(destination, index=False)
 
-    print("Data Preprocessing, EDA and feature engineering Completed and Saved.")
-    print("\n")
+    logging.info("Data Preprocessing, EDA and feature engineering Completed and Saved.")
 
 def main():
     # File paths
@@ -129,7 +134,9 @@ def main():
     DATA_PATH = params["data_path"]
     KAGGLE_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "static/static_data.csv")
     SYNTHETIC_CSV_PATH_PROCESSED = os.path.join(DATA_PATH, "api/api_data.csv")
+    c = "kaggle"
     data_processing(KAGGLE_CSV_PATH, KAGGLE_CSV_PATH_PROCESSED)
+    c = "synthetic"
     data_processing(SYNTHETIC_CSV_PATH, SYNTHETIC_CSV_PATH_PROCESSED)
 
 if __name__ == "__main__":
