@@ -4,10 +4,10 @@ This repository contains the assignment for the subject **Data Management for Ma
 
 ## Group Members
 
-- Rishabh Setiya   2023AC05268
-- Deepti Mahajan   2023AC05918
-- Mariyam Bhoira   2023AC05328
-- Narayan Saha     2023AC05494
+- Rishabh Setiya      2023AC05268
+- Deepti Mahajan      2023AC05918
+- Mariyam Bhoira      2023AC05328
+- Narayan Saha        2023AC05494
 
 ## Video Recording
 
