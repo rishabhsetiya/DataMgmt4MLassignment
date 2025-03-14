@@ -11,7 +11,7 @@ This repository contains the assignment for the subject **Data Management for Ma
 
 ## Video Recording
 
-You can watch the video recording of our project presentation [here](https://example.com/video-link).
+You can watch the video recording of our project presentation [here][https://drive.google.com/file/d/1MtvGchs1hRHYkb8bb7W4HL8lFU3YS87N/view?usp=sharing]
 
 ## 1. Problem Formulation
 
