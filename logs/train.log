@@ -1,0 +1,4 @@
+2025-03-14 16:18:28,589 - INFO - Storing data into feature store...
+2025-03-14 16:18:28,787 - INFO - Connected successfully!
+2025-03-14 16:18:30,374 - INFO - Model trained with accuracy: 0.7520198881292729
+2025-03-14 16:18:30,416 - INFO - Model saved at model/model.pkl

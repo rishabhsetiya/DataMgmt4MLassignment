@@ -1,0 +1,6 @@
+2025-03-14 16:15:58,058 - INFO - Loaded CSV file: data/raw/api/api_data.csv
+2025-03-14 16:15:58,096 - INFO - Loaded CSV file: data/raw/static/static_data.csv
+2025-03-14 16:15:58,113 - INFO - Could not find local file-backed GX project
+2025-03-14 16:15:58,114 - INFO - Created temporary directory 'C:\Users\RISHAB~1\AppData\Local\Temp\tmpdf2di97j' for ephemeral docs site
+2025-03-14 16:15:58,114 - INFO - Loading 'datasources' ->
+[]
