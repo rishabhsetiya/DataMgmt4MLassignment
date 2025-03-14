@@ -38,32 +38,20 @@ def main():
     batch = batch_definition.get_batch(batch_parameters={"dataframe": df})
 
 
-    #Create an Expectation.
-    expectation = gx.expectations.ExpectColumnValuesToBeInSet(
-        column="gender", value_set=['Male', 'Female'],
-    )
+    #Create Expectations.
+    expectations = [
+    gx.expectations.ExpectColumnValuesToBeInSet(column="gender", value_set=['Male', 'Female']),
+    gx.expectations.ExpectColumnValuesToBeBetween(column="MonthlyCharges", min_value=0),
+    gx.expectations.ExpectColumnValuesToBeInSet(column="Churn", value_set=['Yes', 'No']),
+    gx.expectations.ExpectColumnValuesToBeBetween(column="tenure", min_value=0),
+    gx.expectations.ExpectColumnValuesToBeInSet(column="Contract", value_set=['Month-to-month', 'One year', 'Two year'])
+    ]
+    
+    results = []
 
-    # TotalCharges should be non-negative
-    expectation1 = gx.expectations.ExpectColumnValuesToBeOfType(
-    column="TotalCharges",
-    type_="float64"
-    )
-
-    expectation2 = gx.expectations.ExpectColumnValuesToBeOfType(
-    column="MonthlyCharges",
-    type_="float64"
-    )
-
-    #Run and get the results!
-    validation_result = batch.validate(expectation)
-    validation_result1 = batch.validate(expectation1)
-    validation_result2 = batch.validate(expectation2)
-
-    results = {
-        "validation_result": validation_result.to_json_dict(),
-        "validation_result1": validation_result1.to_json_dict(),
-        "validation_result2": validation_result2.to_json_dict(),
-    }
+    for expectation in expectations:
+        validation_result = batch.validate(expectation)
+        results.append(validation_result.to_json_dict()) 
     
     file_path = sys.argv[3]
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
