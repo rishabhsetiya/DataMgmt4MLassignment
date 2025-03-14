@@ -1,0 +1,8 @@
+2025-03-14 16:16:18,823 - INFO - Database 'TELCO_CHURN_DB' already exists.
+2025-03-14 16:16:19,017 - INFO - Connected successfully!
+2025-03-14 16:16:19,054 - INFO - Table data/processed/api/api_data.csv exists. Appending the data
+2025-03-14 16:16:19,321 - INFO - Data written to sql server successfully
+2025-03-14 16:16:19,325 - INFO - Database 'TELCO_CHURN_DB' already exists.
+2025-03-14 16:16:19,333 - INFO - Connected successfully!
+2025-03-14 16:16:19,382 - INFO - Table data/processed/static/static_data.csv exists. Appending the data
+2025-03-14 16:16:20,246 - INFO - Data written to sql server successfully

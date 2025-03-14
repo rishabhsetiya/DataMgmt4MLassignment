@@ -1,0 +1,58 @@
+2025-03-14 16:16:07,664 - INFO - PROCESSING THE FILE data/raw/static/static_data.csv
+2025-03-14 16:16:07,695 - INFO - Shape of the dataset (7043, 21)
+2025-03-14 16:16:07,697 - INFO - Data types of the columns customerID           object
+gender               object
+SeniorCitizen         int64
+Partner              object
+Dependents           object
+tenure                int64
+PhoneService         object
+MultipleLines        object
+InternetService      object
+OnlineSecurity       object
+OnlineBackup         object
+DeviceProtection     object
+TechSupport          object
+StreamingTV          object
+StreamingMovies      object
+Contract             object
+PaperlessBilling     object
+PaymentMethod        object
+MonthlyCharges      float64
+TotalCharges         object
+Churn                object
+dtype: object
+2025-03-14 16:16:07,715 - INFO - Information of the dataset None
+2025-03-14 16:16:07,727 - INFO - Datatype of Total Charges :float64
+2025-03-14 16:16:09,071 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-14 16:16:09,189 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-14 16:16:10,767 - INFO - Data Preprocessing, EDA and feature engineering Completed and Saved.
+2025-03-14 16:16:10,767 - INFO - PROCESSING THE FILE data/raw/api/api_data.csv
+2025-03-14 16:16:10,784 - INFO - Shape of the dataset (1000, 21)
+2025-03-14 16:16:10,785 - INFO - Data types of the columns Churn                object
+Contract             object
+Dependents           object
+DeviceProtection     object
+InternetService      object
+MonthlyCharges      float64
+MultipleLines        object
+OnlineBackup         object
+OnlineSecurity       object
+PaperlessBilling     object
+Partner              object
+PaymentMethod        object
+PhoneService         object
+SeniorCitizen         int64
+StreamingMovies      object
+StreamingTV          object
+TechSupport          object
+TotalCharges        float64
+customerID           object
+gender               object
+tenure                int64
+dtype: object
+2025-03-14 16:16:10,794 - INFO - Information of the dataset None
+2025-03-14 16:16:10,794 - INFO - Datatype of Total Charges :float64
+2025-03-14 16:16:11,029 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-14 16:16:11,041 - INFO - Using categorical units to plot a list of strings that are all parsable as floats or dates. If these strings should be plotted as numbers, cast to the appropriate data type before plotting.
+2025-03-14 16:16:12,202 - INFO - Data Preprocessing, EDA and feature engineering Completed and Saved.
