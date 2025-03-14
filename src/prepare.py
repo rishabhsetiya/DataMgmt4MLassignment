@@ -30,7 +30,7 @@ def impute_missing_values(df):
 
 # Function for processing
 def data_processing(source, destination, c, VISUALIZATIONS_PATH):
-    logging.info ("PROCESSING THE FILE ", source)
+    logging.info (f"PROCESSING THE FILE {source}")
     df = pd.read_csv(source)
 
     logging.info (f"Shape of the dataset {df.shape}")

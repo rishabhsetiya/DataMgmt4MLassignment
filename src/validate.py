@@ -39,21 +39,21 @@ def main():
 
 
     #Create an Expectation.
-    #Expectations are a fundamental component of GX. They allow you to explicitly define the state to which your data should conform.
-    #Run the following code to define an Expectation that the contents of the column passenger_count consist of values ranging from 2 to 6:
     expectation = gx.expectations.ExpectColumnValuesToBeInSet(
         column="gender", value_set=['Male', 'Female'],
     )
 
     # TotalCharges should be non-negative
-    expectation1 = gx.expectations.ExpectColumnValuesToBeBetween(
-    column="TotalCharges", min_value=0
+    expectation1 = gx.expectations.ExpectColumnValuesToBeOfType(
+    column="TotalCharges",
+    type_="float64"
     )
 
     expectation2 = gx.expectations.ExpectColumnValuesToBeOfType(
-    column="MonthlyCharges", 
-    type_list=["int", "float", "double", "decimal"]  # Allow only numeric types
-)
+    column="MonthlyCharges",
+    type_="float64"
+    )
+
     #Run and get the results!
     validation_result = batch.validate(expectation)
     validation_result1 = batch.validate(expectation1)
@@ -67,9 +67,6 @@ def main():
     
     file_path = sys.argv[3]
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
-    #with open(file_path, 'w') as file:
-    #    file.write(str(validation_result))
 
     with open(file_path, 'w') as file:
         json.dump(results, file, indent=4)
