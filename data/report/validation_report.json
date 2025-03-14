@@ -1,0 +1,162 @@
+[
+    {
+        "success": true,
+        "expectation_config": {
+            "type": "expect_column_values_to_be_in_set",
+            "kwargs": {
+                "batch_id": "pandas-pd dataframe asset",
+                "column": "gender",
+                "value_set": [
+                    "Male",
+                    "Female"
+                ]
+            },
+            "meta": {}
+        },
+        "result": {
+            "element_count": 8043,
+            "unexpected_count": 0,
+            "unexpected_percent": 0.0,
+            "partial_unexpected_list": [],
+            "missing_count": 0,
+            "missing_percent": 0.0,
+            "unexpected_percent_total": 0.0,
+            "unexpected_percent_nonmissing": 0.0,
+            "partial_unexpected_counts": [],
+            "partial_unexpected_index_list": []
+        },
+        "meta": {},
+        "exception_info": {
+            "raised_exception": false,
+            "exception_traceback": null,
+            "exception_message": null
+        }
+    },
+    {
+        "success": true,
+        "expectation_config": {
+            "type": "expect_column_values_to_be_between",
+            "kwargs": {
+                "batch_id": "pandas-pd dataframe asset",
+                "column": "MonthlyCharges",
+                "min_value": 0.0
+            },
+            "meta": {}
+        },
+        "result": {
+            "element_count": 8043,
+            "unexpected_count": 0,
+            "unexpected_percent": 0.0,
+            "partial_unexpected_list": [],
+            "missing_count": 0,
+            "missing_percent": 0.0,
+            "unexpected_percent_total": 0.0,
+            "unexpected_percent_nonmissing": 0.0,
+            "partial_unexpected_counts": [],
+            "partial_unexpected_index_list": []
+        },
+        "meta": {},
+        "exception_info": {
+            "raised_exception": false,
+            "exception_traceback": null,
+            "exception_message": null
+        }
+    },
+    {
+        "success": true,
+        "expectation_config": {
+            "type": "expect_column_values_to_be_in_set",
+            "kwargs": {
+                "batch_id": "pandas-pd dataframe asset",
+                "column": "Churn",
+                "value_set": [
+                    "Yes",
+                    "No"
+                ]
+            },
+            "meta": {}
+        },
+        "result": {
+            "element_count": 8043,
+            "unexpected_count": 0,
+            "unexpected_percent": 0.0,
+            "partial_unexpected_list": [],
+            "missing_count": 0,
+            "missing_percent": 0.0,
+            "unexpected_percent_total": 0.0,
+            "unexpected_percent_nonmissing": 0.0,
+            "partial_unexpected_counts": [],
+            "partial_unexpected_index_list": []
+        },
+        "meta": {},
+        "exception_info": {
+            "raised_exception": false,
+            "exception_traceback": null,
+            "exception_message": null
+        }
+    },
+    {
+        "success": true,
+        "expectation_config": {
+            "type": "expect_column_values_to_be_between",
+            "kwargs": {
+                "batch_id": "pandas-pd dataframe asset",
+                "column": "tenure",
+                "min_value": 0.0
+            },
+            "meta": {}
+        },
+        "result": {
+            "element_count": 8043,
+            "unexpected_count": 0,
+            "unexpected_percent": 0.0,
+            "partial_unexpected_list": [],
+            "missing_count": 0,
+            "missing_percent": 0.0,
+            "unexpected_percent_total": 0.0,
+            "unexpected_percent_nonmissing": 0.0,
+            "partial_unexpected_counts": [],
+            "partial_unexpected_index_list": []
+        },
+        "meta": {},
+        "exception_info": {
+            "raised_exception": false,
+            "exception_traceback": null,
+            "exception_message": null
+        }
+    },
+    {
+        "success": true,
+        "expectation_config": {
+            "type": "expect_column_values_to_be_in_set",
+            "kwargs": {
+                "batch_id": "pandas-pd dataframe asset",
+                "column": "Contract",
+                "value_set": [
+                    "Month-to-month",
+                    "One year",
+                    "Two year"
+                ]
+            },
+            "meta": {}
+        },
+        "result": {
+            "element_count": 8043,
+            "unexpected_count": 0,
+            "unexpected_percent": 0.0,
+            "partial_unexpected_list": [],
+            "missing_count": 0,
+            "missing_percent": 0.0,
+            "unexpected_percent_total": 0.0,
+            "unexpected_percent_nonmissing": 0.0,
+            "partial_unexpected_counts": [],
+            "partial_unexpected_index_list": []
+        },
+        "meta": {},
+        "exception_info": {
+            "raised_exception": false,
+            "exception_traceback": null,
+            "exception_message": null
+        }
+    }
+]
