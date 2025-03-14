@@ -1,5 +1,5 @@
 outs:
-- md5: 0f9de68e012bd3aed5fa7cdc9fc421af
-  size: 977501
+- md5: 07b8246b8599ccdc4cd8cbe714899b09
+  size: 841323
   hash: md5
   path: static_data.csv
